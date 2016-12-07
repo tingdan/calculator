@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <style type="text/css">
+    body{
+	font-family: "Roboto",Arial, sans-serif;
+}
+.calc-wrapper{
+	border: 1px solid #D7D7D7;
+	margin: 0 auto;
+	width: 200px;
+	box-shadow: 3px 4px 4px #888888;
+}
+
+.screen{
+	background-color: #0C92CC;
+	color: black;
+	text-align: right;
+	padding: 0 5px;
+}
+.header{
+	font-size: 16px;
+	height: 25px;
+	text-align: center;
+	font-weight: 700;
+}
+.screen-top{
+	display: block;
+	height: 30px;
+	font-size: 16px;
+	line-height: 30px;
+	background-color: white;
+}
+
+.screen-bot{
+	display: block;
+	height: 30px;
+	font-size: 28px;
+	line-height: 30px;
+	font-weight: 600;
+	background-color: white;
+}
+
+.row{
+	display: table;
+}
+.row>div{
+	display: table-cell;
+	width: 65px;
+	height: 65px;
+	text-align: center;
+	vertical-align: middle;
+	background-color: #0C92CC;
+}
+
+.row>div:hover{
+	cursor: pointer;
+	background-color: #67D9EE;
+	transition: all 0.2s ease;
+}
+
+
+
+  </style>
+
+  <title></title>
+
+
+
+
+
+
+
+<script type='text/javascript'>//<![CDATA[
+window.onload=function(){
+var a = '';
+var b = '';
+var op = '';
+
+$('.num').on('click',function(){
+if($('.screen-top').text() === ''){a+=$(this).text();$('.screen-bot').text(a);}
+else{b += $(this).text();
+		 $('.screen-bot').text(b);	}
+});
+
+$('.operation').on('click',function(){
+			op = $(this).text();
+		$('.screen-top').text(a+op);
+    $('.screen-bot').text('');
+});
+
+$('.equal').on('click',function(){
+			var sum = 0;
+      console.log(a);
+        console.log(b);
+      switch(op) {
+    case '+':
+        sum = Number(a)+Number(b);
+        break;
+    case '-':
+        sum = Number(a)-Number(b);
+        break;
+     case '×':
+        sum = Number(a)*Number(b);
+        break;
+    case '÷':
+    		sum = Number(a)/Number(b);
+        break;
+}
+			$('.screen-bot').text(sum);
+});
+
+$('.clear-entry').on('click',function(){
+		$('.screen-bot').text('');
+     if($('.screen-top').text() === '') {
+       console.log($('.screen-top').text());
+         console.log('remove a');
+     a = '';
+     }
+     else {console.log('remove b');
+       b='';}
+
+});
+
+$('.clear-all').on('click',function(){
+  $('.screen-bot').text('');
+  $('.screen-top').text('');
+  a = '';
+  b = '';
+});
+
+
+}//]]>
+
+</script>
+
+
+</head>
+
+<body>
+  <body>
+		<div class="calc-wrapper">
+			<div class="screen">
+				<div class="header">Danni's Calculator</div>
+				<div class="screen-top"></div>
+				<div class="screen-bot"></div>
+			</div>
+			<div class="row">
+				<div class="clear-entry">CE</div>
+				<div class="clear-all">C</div>
+				<div></div>
+				<div class="operation">&divide;</div>
+			</div>
+			<div class="row">
+				<div class="num">7</div>
+				<div class="num">8</div>
+				<div class="num">9</div>
+				<div class="operation">&times;</div>
+			</div>
+			<div class="row">
+				<div class="num">4</div>
+				<div class="num">5</div>
+				<div class="num">6</div>
+				<div class="operation">-</div>
+			</div>
+			<div class="row">
+				<div class="num">1</div>
+				<div class="num">2</div>
+				<div class="num">3</div>
+				<div class="operation">+</div>
+			</div>
+			<div class="row">
+				<div class="plus-minus">&plusmn;</div>
+				<div class="num">0</div>
+				<div class="decimal">.</div>
+				<div class="equal">=</div>
+			</div>
+		</div>
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+		<script type="text/javascript" src="scripts/main.js"></script>
+
+	</body>
+
+</body>
+
+</html>
